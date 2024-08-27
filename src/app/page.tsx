@@ -1,10 +1,16 @@
-import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const ThemeToggle = dynamic(() => import("@/components/ThemeToggle"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
     <section className="py-24">
       <div className="container">
         <h1 className="text-3xl font-bold">Portfolio</h1>
+
+        <ThemeToggle />
       </div>
     </section>
   );
