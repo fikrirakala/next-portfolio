@@ -1,7 +1,7 @@
+import MDXContent from "@/components/MDXContent";
 import { getPostBySlug } from "@/lib/posts";
 import { formatDate } from "@/lib/utils";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -49,7 +49,7 @@ export default async function PostDetailsPage({
         </header>
 
         <main className="prose dark:prose-invert mt-16">
-          <MDXRemote source={content} />
+          <MDXContent source={content} />
         </main>
 
         {/* <footer className="mt-16">
