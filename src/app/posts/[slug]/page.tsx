@@ -1,11 +1,19 @@
 import MDXContent from "@/components/MDXContent";
-import { getPostBySlug } from "@/lib/posts";
+import { getPostBySlug, getPosts } from "@/lib/posts";
 import { formatDate } from "@/lib/utils";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
+
+export async function generateStaticParams() {
+  const posts = await getPosts();
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export default async function PostDetailsPage({
   params: { slug },
