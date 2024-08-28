@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body
+        className={cn(
+          "flex min-h-screen flex-col antialiased",
+          inter.className,
+        )}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -26,7 +33,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          {children}
+          <main className="grow">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
