@@ -36,7 +36,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="grow">{children}</main>
+          <main className="relative grow">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
