@@ -3,22 +3,19 @@
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { ContactFormInputs, ContactFormSchema } from "@/lib/validation";
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { sendEmail } from "@/app/contact/actions";
-import { useToast } from "./ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function ContactForm() {
   const { toast } = useToast();
@@ -37,7 +34,7 @@ export default function ContactForm() {
 
     if (result?.error) {
       toast({
-        description: "An error occurred! Please try again.",
+        description: "Something wrong. Please try again. Please try again.",
         variant: "destructive",
       });
       return;

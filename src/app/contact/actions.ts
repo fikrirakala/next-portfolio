@@ -3,19 +3,13 @@
 import { Resend } from "resend";
 import { ContactFormInputs, ContactFormSchema } from "@/lib/validation";
 import ContactFormEmail from "@/emails/ContactFormEmail";
-import { text } from "stream/consumers";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function sendEmail(data: ContactFormInputs) {
-  const result = ContactFormSchema.safeParse(data);
-
-  if (result.error) {
-    return { error: result.error.format() };
-  }
-
+export async function sendEmail(values: ContactFormInputs) {
   try {
-    const { name, email, message } = result.data;
+    const { name, email, message } = ContactFormSchema.parse(values);
+
     const { data, error } = await resend.emails.send({
       from: `${name} <onboarding@resend.dev>`,
       to: ["fikrirakala@gmail.com"],
@@ -31,6 +25,7 @@ export async function sendEmail(data: ContactFormInputs) {
 
     return { success: true };
   } catch (error) {
-    return { error };
+    console.error(error);
+    return { error: "Something wrong. Please try again." };
   }
 }
