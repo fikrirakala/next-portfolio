@@ -4,7 +4,7 @@ import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const playfair = Playfair_Display({
@@ -39,6 +39,7 @@ export default function RootLayout({
           <main className="relative grow">{children}</main>
           <Footer />
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );
