@@ -10,18 +10,18 @@ export async function sendEmail(values: ContactFormInputs) {
   try {
     const { name, email, message } = ContactFormSchema.parse(values);
 
-    const { data, error } = await resend.emails.send({
-      from: `${name} <onboarding@resend.dev>`,
-      to: ["fikrirakala@gmail.com"],
-      replyTo: email,
-      subject: "Contact form submission",
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-      react: ContactFormEmail({ name, email, message }),
-    });
+    // const { data, error } = await resend.emails.send({
+    //   from: `${name} <onboarding@resend.dev>`,
+    //   to: ["fikrirakala@gmail.com"],
+    //   replyTo: email,
+    //   subject: "Contact form submission",
+    //   text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+    //   react: ContactFormEmail({ name, email, message }),
+    // });
 
-    if (!data || error) {
-      throw new Error("Failed to send email");
-    }
+    // if (!data || error) {
+    //   throw new Error("Failed to send email");
+    // }
 
     return { success: true };
   } catch (error) {

@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/toaster";
+import NewsletterForm from "@/components/newsletter/NewletterForm";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const playfair = Playfair_Display({
@@ -37,6 +38,7 @@ export default function RootLayout({
         >
           <Header />
           <main className="relative grow">{children}</main>
+          <NewsletterForm />
           <Footer />
         </ThemeProvider>
         <Toaster />

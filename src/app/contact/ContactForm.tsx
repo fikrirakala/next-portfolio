@@ -34,7 +34,7 @@ export default function ContactForm() {
 
     if (result?.error) {
       toast({
-        description: "Something wrong. Please try again. Please try again.",
+        description: "Something wrong. Please try again.",
         variant: "destructive",
       });
       return;
